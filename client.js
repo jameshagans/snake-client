@@ -9,10 +9,37 @@ const connect = function () {
   //interpert incoming data as text
   conn.setEncoding("utf-8")
 
+  //send a message to our terminal when connected to server
+  conn.on('connect', () => {
+    console.log('Suscssfully connected!')
+  })
+
+  //Set Name adn move up a space
+  conn.on('connect', () => {
+    conn.write( "Name: JJH")
+    // setInterval(() => {
+    //   conn.write( "Move: up");
+    // }, 500)
+    setTimeout(() => {
+      conn.write('Move: up')
+    }, 500)
+    setTimeout(() => {
+      conn.write('Move: left')
+    }, 1000)
+    setTimeout(() => {
+      conn.write('Move: up')
+    }, 1500)
+  })
+  
+
+
+  //take in any data sent by server
   conn.on("data", (data) => {
   // code that does something when data sent by the server
   console.log(data)
 });
+
+
   
   return conn;
 }
