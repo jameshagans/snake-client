@@ -14,21 +14,12 @@ const connect = function () {
     console.log('Suscssfully connected!')
   })
 
-  //Set Name adn move up a space
+  //Set Name 
   conn.on('connect', () => {
     conn.write( "Name: JJH")
     // setInterval(() => {
     //   conn.write( "Move: up");
     // }, 500)
-    setTimeout(() => {
-      conn.write('Move: up')
-    }, 500)
-    setTimeout(() => {
-      conn.write('Move: left')
-    }, 1000)
-    setTimeout(() => {
-      conn.write('Move: up')
-    }, 1500)
   })
   
 
