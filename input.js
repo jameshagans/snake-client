@@ -1,35 +1,20 @@
-let connection; 
+const { keyBinds } = require("./constants.js");
 
-const handleUserInput = function (data) { 
+let connection;
+
+const handleUserInput = function(data) {
   if (data === '\u0003') {
-   // console.log('EXIT_____________', data)
+    // console.log('EXIT_____________', data)
     process.exit();
   }
 
-  if (data === 'w') {
-    connection.write("Move: up");
-   }
-
-   if (data === 'a') {
-    connection.write("Move: left");
-   }
-
-   if (data === 's') {
-    connection.write("Move: down");
-   }
-
-   if (data === 'd') {
-    connection.write("Move: right");
-   }
-
-   if (data === 'e') {
-    connection.write("Say: LOLZ");
-   }
+  connection.write(keyBinds[data]);
+  
 };
 
 // setup interface to handle user input from stdin
 
-const setupInput = function (conn) {
+const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -40,4 +25,25 @@ const setupInput = function (conn) {
   return stdin;
 };
 
-module.exports = { setupInput }
+module.exports = { setupInput };
+
+
+// if (data === 'w') {
+//   connection.write("Move: up");
+// }
+
+// if (data === 'a') {
+//   connection.write("Move: left");
+// }
+
+// if (data === 's') {
+//   connection.write("Move: down");
+// }
+
+// if (data === 'd') {
+//   connection.write("Move: right");
+// }
+
+// if (data === 'e') {
+//   connection.write("Say: LOLZ");
+// }
