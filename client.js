@@ -14,12 +14,18 @@ const connect = function () {
     console.log('Suscssfully connected!')
   })
 
-  //Set Name 
+  //Set Name and move
   conn.on('connect', () => {
     conn.write( "Name: JJH")
     // setInterval(() => {
     //   conn.write( "Move: up");
     // }, 500)
+    //   setInterval(() => {
+    //   conn.write( "Move: up");
+    // }, 1000)
+    //   setInterval(() => {
+    //   conn.write( "Move: up");
+    // }, 1500)
   })
   
 
@@ -31,8 +37,7 @@ const connect = function () {
 });
 
 
-  
   return conn;
 }
 
-module.exports = connect; 
+module.exports = { connect }
